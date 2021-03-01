@@ -1,0 +1,123 @@
+//===============QUESTÃO PRÁTICA:===============
+@members{
+    int total = 0;
+    ArrayList<String> listaFinal;
+}
+
+lista: ABRECHAVETA
+       [palavra|numero]
+       (HIFEN ([palavra|numero]))*
+       FECHACHAVETA
+       {
+           listaFinal = new ArrayList<String>(ListStr);
+           listaFinal.sort();
+       }
+       ;
+
+palavra: TXT {
+                ListStr.cons($TXT.text);
+             }
+       ;
+
+numero: NUM {
+                int n = Integer.ParseInt($NUM.text);
+
+                if(n%2==0){
+                    total++;
+                }
+            }
+      ;
+
+a-1-a-1-1
+ABRECHAVETA: '{';
+FECHACHAVETA: '}';
+HIFEN: '-';
+
+TXT: [a-zA-Z]+;
+NUM: [0-9]+;
+
+Exemplo input:
+{ola-23-adeus-2-palavra-1393-afASdiF-321}
+
+A parte menos bem feita é a maneira como é feita a lista inversa de palavras,
+decidi fazer deste método para não deixar por fazer.
+
+
+
+//===============QUESTÃO TEÓRICA 1===============
+Na minha opinião, uma linguagem de programação adequada para
+iniciar alunos universitários na atividade de programação é C.
+
+Escolho C, talvez previsivelmente, por várias razões:
+Apesar de não ser tão simples como certas linguagens 'iniciais'
+como Python, JavaScript, Ruby entre outras, penso que C, por ser
+uma linguagem que precede quase todas estas linguagens mais
+modernas, tem um nivel de documentação muito mais elevado,
+e é muito provável que as partes que um iniciante possa ter
+dificuldades estão bem esclarecidas em vários tipos de recursos
+(livros, fóruns de internet, etc...).
+
+Outra razão é a consistência de C. É uma linguagem em que é muito raro
+ter resultados inesperados, como ãs vezes acontece, por exemplo
+em JavaScript (que mudou certa altura de ser preciso usar ';' no fim de linhas,
+uma coisa que apesar de ser inofensiva traz 'confusão' para alguns iniciantes
+que não percebam o porquê de se poder usar ou não a ';').
+
+C é também de muita alta confiança e fiabilidade, qualquer computador é capaz de
+compilar C facilmente e rapidamente, com descrições detalhadas dos erros e avisos,
+assim como a possibilidade de debug de código através de tools disponíveis.
+
+Quanto a escalabilidade, C pode ser utilizado para projectos simples
+de apenas um ficheiro para grandes sistemas complexos com vários
+ficheiros C e headers.
+
+Por estas razões penso que C seja uma linguagem muito adequada para iniciantes,
+e penso que será uma resposta muito comum a esta pergunta (como foi confirmado
+numa aula de GCS que se falou exatamente deste assunto)
+
+
+
+//===============QUESTÃO TEÓRICA 2===============
+Para escrever um processador para uma DSL em ANTLR, prefiria usar uma GA
+principalmente devido a existencia de atributos, com isto tem-se mais possibilidades
+na interpretação de input, dando melhor controlo no processador.
+
+
+
+//===============QUESTÃO TEÓRICA 3===============
+Das duas GIC apresentadas, para mim a de melhor qualidade é a GIC2.
+Escolho a GIC2 porque esta apresenta um maior grau de complexidade que
+na minha opinião, faz com que seja mais consistente e legível. Isto não é
+sempre verdade no sentido que quanto mais complexa a GIC mais legível ela é,
+mas neste caso, a GIC1 é muito menos intuitiva do que a GIC2, e isso é um fator
+importante nestas decisões. Tomando por exemplo:
+
+Para a GIC1, isto seria válido (caso se ignorasse os espaços e newlines):
+a74618'Bernardo Viseu'
+a11111'Joao Silva'
+a22222'Maria Joao'
+a33333'Jose Sousa'
+1 a74618 a11111
+2 a22222 a33333
+
+Para a GIC2, isto seria válido (caso se ignorasse os espaços e newlines):
+ALS
+a74618-'Bernardo Viseu';
+a11111-'Joao Silva';
+a22222-'Maria Joao';
+a33333-'Jose Sousa';
+GRS
+Gr 1 <a74618, a11111>;
+Gr 2 <a22222, a33333>;
+
+Temos então uma legibilidade muito maior, na minha opinião, na GIC2.
+
+
+
+//===============QUESTÃO TEÓRICA 4===============
+A utilização de uma ontologia é essencial porque significa que estamos a 
+ter em conta uma relação entre os vários componentes da nossa DSL. No projecto
+realizado pelo meu grupo realizamos várias relações, as mais importantes e comuns
+são as descendencias entre certos componentes, por exemplo, um componente denomidado
+'ras' que tem contido (entre outros componentes), várias 'ra', que por sua vez tem 
+componentes necessários para representar os simbolos 'base' da linguagem.
